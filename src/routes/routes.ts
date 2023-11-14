@@ -1,11 +1,11 @@
 import { FC } from "react";
 
 import { AddPoint } from "../pages/AuthPage/AddPoint/AddPoint";
-import { EditPoint } from "../pages/AuthPage/EditPoint/EditPoint";
+import { EditAddress } from "../pages/AuthPage/EditAddress/EditAddress";
 import { Points } from "../pages/AuthPage/Points/Points";
 import { Profile } from "../pages/AuthPage/Profile/Profile";
 import { Login } from "../pages/PublicPage/Auth/Login";
-import { SignUp } from "../pages/PublicPage/Auth/Signup";
+import { SignUp } from "src/pages/PublicPage/Auth/SignUp"; 
 import { ConfirmLogin } from "../pages/PublicPage/Confirms/ConfirmLogin";
 import { ConfirmSignup } from "../pages/PublicPage/Confirms/ConfirmSignup";
 import { Docs } from "../pages/PublicPage/Docs/Docs";
@@ -83,24 +83,24 @@ export const PublicRoutes: IRoute[] = [
 ];
 
 export const AuthRoutes: IRoute[] = [
-    {
-        path: "/profile/:profileId",
-        Component: Profile,
-    },
-    {
-        path: "/points/:profileId/points",
-        Component: Points,
-    },
-    {
-        path: "/points/:profileId/points/:pointId",
-        Component: Point,
-    },
-    {
-        path: "/points/:profileId/points/addPoint",
-        Component: AddPoint,
-    },
-    {
-        path: "/points/:profileId/points/:pointId/editPoint",
-        Component: EditPoint,
-    },
+  {
+    path: "/profile/:profileId",
+    Component: Profile,
+  },
+  {
+    path: "/points/:profileId",
+    Component: Points,
+  },
+  {
+    path: "/points/:profileId/:pointId",
+    Component: Point,
+  },
+  {
+    path: "/points/:profileId/points/addPoint",
+    Component: AddPoint,
+  },
+  {
+    path: "/points/:profileId/:pointId/editAddress",
+    Component: EditAddress,
+  },
 ];

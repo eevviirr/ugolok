@@ -56,6 +56,15 @@ $ColorWhite: #fff;
     text-align: center;
     padding-top: 8vh;
 }
+.subTitle{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    max-width: 315px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid #fff;
+}
 
 .input {
     border-radius: 0px 10px 10px 10px;
@@ -70,9 +79,20 @@ $ColorWhite: #fff;
     font-size: 15px;
     font-weight: 500;
 }
+.inputpas {
+    border-radius: 0px 10px 10px 10px;
+    border: 2px solid #fff;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    padding-left: 16px;
+    color: #fff;
+    outline: none;
+    width: 100%;
+
+    font-size: 15px;
+    font-weight: 500;
+}
 .inputError{
     border: 2px solid #EA271B;
-
     background: none;
-    
 }

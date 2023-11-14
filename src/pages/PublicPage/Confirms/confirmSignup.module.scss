@@ -1,0 +1,15 @@
+.form{
+    margin-top: 8vh;
+
+        .buttons {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+                position: fixed;
+                bottom: 2vh;
+                width: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-bottom: 0 !important;
+            }
+}
