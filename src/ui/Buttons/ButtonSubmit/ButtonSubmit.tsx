@@ -1,19 +1,18 @@
 import { FC } from "react";
-
 interface IButtonSubmit {
-    type?: "submit" | "button";
-    title?: string;
+    title: string;
     isActive?: boolean;
+    type: "button" | "submit";
 }
-const ButtonSubmit: FC<IButtonSubmit> = ({
-    type = "button",
-    isActive = false,
-    title = "Далее",
-}) => {
+const ButtonSubmit: FC<IButtonSubmit> = ({ title, isActive = false, type }) => {
     return (
         <button
             type={type}
-            className={`${isActive ? "button" : "buttonTransparent"}`}>
+            className={`w-full py-[13px] text-15px font-bold  flex justify-center ${
+                isActive
+                    ? "bg-white rounded-activeBorder text-black"
+                    : "border border-white rounded-passiveBorder text-white"
+            }`}>
             {title}
         </button>
     );

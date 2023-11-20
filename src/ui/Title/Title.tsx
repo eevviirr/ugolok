@@ -1,17 +1,17 @@
 import { FC } from "react";
 
-import styles from "./Title.module.scss";
-
 interface ITitle {
-  title: string;
+    title: string;
 }
 const Title: FC<ITitle> = ({ title }) => {
-  return (
-    <>
-      <span className={styles.subtitle}>Уголок потребителя</span>
-      <h2 className="subTitle">{title}</h2>
-    </>
-  );
+    return (
+        <>
+            <span className='text-white text-18px opacity-70'>
+                Уголок потребителя
+            </span>
+            <h2 className='text-white text-30px font-bold py-[10px] border-b '>{title}</h2>
+        </>
+    );
 };
 
 export { Title };

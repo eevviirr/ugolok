@@ -1,40 +1,45 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
-import styles from "./Style.module.scss";
-
-interface IInput {
-  title?: string;
-  useForm?: any;
-  isErrors?: boolean;
-  handleChange?: (e: any) => void;
-  isActive?: boolean;
+interface IInput extends React.HTMLProps<HTMLInputElement> {
+    title: string;
+    isError?: boolean;
+    errorMessage?: any;
+    useForm?: any;
+    isActive?: boolean;
 }
-const Input: FC<IInput> = ({
-  title = "Название",
-  useForm,
-  handleChange,
-  isErrors = false,
-  isActive = true,
-}) => (
-  <div>
-    <span
-      className={`${styles.titleInput} ${
-        isErrors ? `${styles.titleInputErr}` : ""
-      }`}
-    >
-      {title}
-    </span>
-    <input
-      type="text"
-      name="input"
-      className={` ${isErrors ? "inputError" : ""} ${
-        isActive ? "input" : `inputpas`
-      }`}
-      {...useForm}
-      onChange={handleChange}
-    />
-    {/* {isErrors && <span className={styles.errors}>Ошибка</span>} */}
-  </div>
-);
+const Input: FC<IInput> = (props: IInput) => {
+    const {
+        title,
+        isError,
+        errorMessage,
+        useForm,
+        isActive = true,
+    }: IInput = props;
+    return (
+        <label>
+            <span
+                className={`text-18px  block pb-[12px] ${
+                    isError ? "text-red" : "text-white"
+                }`}>
+                {title}
+            </span>
+            <input
+                {...useForm}
+                {...props}
+                type='text'
+                className={`w-full py-[21px] px-[16px]  text-15px rounded-passiveBorder outline-none ${
+                    isError
+                        ? "border-red text-white bg-[transparent]"
+                        : " text-black"
+                } ${
+                    isActive
+                        ? "bg-white outline-none border border-[transparent]"
+                        : " border border-white bg-[transparent] text-white"
+                }`}
+            />
+            <span className='text-red text-15px'>{errorMessage}</span>
+        </label>
+    );
+};
 
 export { Input };

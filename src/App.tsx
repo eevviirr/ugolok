@@ -1,10 +1,10 @@
-import { AppRouter } from "./routes/AppRouter";
+import { AppRoutes } from "src/routes/AppRoutes";
 
 function App() {
     return (
-        <div className='container'>
-            <AppRouter />
-        </div>
+        <>
+            <AppRoutes />
+        </>
     );
 }
 
