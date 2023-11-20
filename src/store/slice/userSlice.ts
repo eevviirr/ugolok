@@ -1,20 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IInitialState {
-    name: string;
-    surname: string;
-    phone_number: string;
-    id: string;
-    points_id: string[];
-    isAuth: boolean;
+    name: string,
+    surname: string,
+    login: string,
+    password: string,
+    id: string,
+    points_id: string[],
+    balance: number
+    isAuth: boolean
 }
 const initialState: IInitialState = {
-    name: "",
-    surname: "",
-    phone_number: "",
-    id: "",
+    name: '',
+    surname: '',
+    login: '',
+    password: '',
+    id: '',
     points_id: [],
-    isAuth: false,
+    balance: 0,
+    isAuth: false
 };
 const userSlice = createSlice({
     name: "user",

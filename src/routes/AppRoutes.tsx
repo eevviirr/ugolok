@@ -10,11 +10,13 @@ import { useGetUserQuery } from "src/store/RTKSlice/api";
 const AppRoutes: FC = ({}) => {
     const token = localStorage.getItem("token")!;
     const isAuth = useAppSelector((state) => state.userSlice.isAuth);
+    
     const dispatch = useAppDispatch();
     const { data } = useGetUserQuery(token);
-    dispatch(setUser(data));
-    if (token) {
-        dispatch(setUser({ isAuth: true }));
+
+    
+    if (token !== null) {
+        dispatch(setUser(data));
     }
     let routes = publicRoute.map(({ path, Component }) => (
         <Route key={path} path={path} element={<Component />} />

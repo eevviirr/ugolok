@@ -2,12 +2,12 @@ import { FC } from "react";
 import { AddPoint } from "src/Pages/AddPoint/AddPoint";
 import { Login } from "src/Pages/Auth/Login";
 import { Register } from "src/Pages/Auth/Register";
-import { ConfirmLogin } from "src/Pages/Confirm/ConfirmLogin";
-import { ConfirmRegister } from "src/Pages/Confirm/ConfirmRegister";
 import { EditAddress } from "src/Pages/EditAddress/EditAddress";
 import { Home } from "src/Pages/Home/Home";
+import { Payments } from "src/Pages/Payments/Payments";
 import { Point } from "src/Pages/Point/Point";
 import { Points } from "src/Pages/Points/Points";
+import { Profile } from "src/Pages/Profile/Profile";
 
 interface IRoute {
     path: string;
@@ -25,14 +25,6 @@ export const publicRoute: IRoute[] = [
     {
         path: "/login",
         Component: Login,
-    },
-    {
-        path: "register/confirm",
-        Component: ConfirmRegister,
-    },
-    {
-        path: "login/confirm",
-        Component: ConfirmLogin,
     },
     {
         path: "/point/:pointId",
@@ -56,5 +48,13 @@ export const authRoute: IRoute[] = [
     {
         path: "/point/:pointId/editAddress",
         Component: EditAddress,
+    },
+    {
+        path: "/profile",
+        Component: Profile,
+    },
+    {
+        path: "/profile/payments",
+        Component: Payments,
     },
 ];

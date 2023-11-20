@@ -52,10 +52,17 @@ export const ugolokApi = createApi({
             }),
             invalidatesTags: ["getPoints"],
         }),
+        postPayments: builder.mutation({
+            query: ({ userId, value}) => ({
+                url: `payments/${userId}?value=${value}`,
+                method: "POST"
+            })
+        })
     }),
 });
 
 export const {
+    usePostPaymentsMutation,
     useGetUserQuery,
     useGetPhoneMutation,
     usePostCodeMutation,
