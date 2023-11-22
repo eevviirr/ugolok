@@ -1,37 +1,37 @@
-import { FC } from "react";
-import { useForm, FieldValues } from "react-hook-form";
+import { FC } from "react"
+import { useForm, FieldValues } from "react-hook-form"
 
-import { axiosBase } from "src/axios";
-import { useAppDispatch } from "src/hooks/useAppDispatch";
-import { setUser } from "src/store/slice/userSlice";
-import { ButtonBack } from "src/ui/Buttons/ButtonBack/ButtonBack";
-import { ButtonSubmit } from "src/ui/Buttons/ButtonSubmit/ButtonSubmit";
-import { Input } from "src/ui/Input/Input";
-import { Logo } from "src/ui/Logo/Logo";
+import { axiosBase } from "src/axios"
+import { useAppDispatch } from "src/hooks/useAppDispatch"
+import { setUser } from "src/store/slice/userSlice"
+import { ButtonBack } from "src/ui/Buttons/ButtonBack/ButtonBack"
+import { ButtonSubmit } from "src/ui/Buttons/ButtonSubmit/ButtonSubmit"
+import { Input } from "src/ui/Input/Input"
+import { Logo } from "src/ui/Logo/Logo"
 
 interface IDataForm {
-  login: string;
-  password: string;
+  login: string
+  password: string
 }
 const Login: FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const dispatch = useAppDispatch();
+  } = useForm()
+  const dispatch = useAppDispatch()
   const onSubmit = (data: FieldValues | IDataForm) => {
     try {
       axiosBase
         .get(`/proprietors/token?login=${data.login}&password=${data.password}`)
         .then(({ data }) => {
-          localStorage.setItem("token", data);
-          dispatch(setUser({}));
-        });
+          localStorage.setItem("token", data)
+          dispatch(setUser({ token: data }))
+        })
     } catch (error) {
-      alert("произошла ошибка");
+      alert("произошла ошибка")
     }
-  };
+  }
   return (
     <div>
       <Logo />
@@ -59,7 +59,7 @@ const Login: FC = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export { Login };
+export { Login }

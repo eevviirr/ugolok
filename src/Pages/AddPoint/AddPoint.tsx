@@ -1,40 +1,48 @@
-import { FC } from "react";
-import { FieldValues, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useAddPointMutation } from "src/store/RTKSlice/api";
-import { ButtonBack } from "src/ui/Buttons/ButtonBack/ButtonBack";
-import { ButtonSubmit } from "src/ui/Buttons/ButtonSubmit/ButtonSubmit";
-import { Input } from "src/ui/Input/Input";
-import { Title } from "src/ui/Title/Title";
+import { FC } from "react"
+import { FieldValues, useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+import { useAddPointMutation } from "src/store/RTKSlice/api"
+import { ButtonBack } from "src/ui/Buttons/ButtonBack/ButtonBack"
+import { ButtonSubmit } from "src/ui/Buttons/ButtonSubmit/ButtonSubmit"
+import { Input } from "src/ui/Input/Input"
+import { Title } from "src/ui/Title/Title"
 
 const AddPoint: FC = ({}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const token = localStorage.getItem("token");
-  const [addPoint] = useAddPointMutation();
-  const navigate = useNavigate();
-  const onSubmit = (data: FieldValues) => {
-    addPoint({
-      token,
-      body: {
-        title: data.name,
-        address: data.address,
-        ITN: data.ITN,
-        MSRN: data.MSRN,
-      },
-    }).then(() => {
-      navigate(-1);
-    });
-  };
+  } = useForm()
+  const token = localStorage.getItem("token")
+  const [addPoint] = useAddPointMutation()
+  const navigate = useNavigate()
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      const res: any = await addPoint({
+        token,
+        body: {
+          title: data.name,
+          address: data.address,
+          inn: data.ITN,
+          ogrn: data.MSRN,
+        },
+      })
+      if (res.error) {
+        alert("что-то пошло не так")
+      } else {
+        navigate(-1)
+      }
+    } catch {
+      alert("что-то пошло не так")
+    }
+  }
   return (
     <div>
       <Title title="НОВАЯ ТОЧКА" />
       <form
         className="mt-[8vh]"
-        onSubmit={handleSubmit((data) => onSubmit(data))}>
+        onSubmit={handleSubmit((data) => onSubmit(data))}
+      >
         <div className="h-[50vh] overflow-scroll flex flex-col gap-[32px]">
           <Input
             useForm={register("ITN", {
@@ -82,7 +90,7 @@ const AddPoint: FC = ({}) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export { AddPoint };
+export { AddPoint }

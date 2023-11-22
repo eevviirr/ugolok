@@ -9,6 +9,7 @@ interface IInitialState {
     points_id: string[],
     balance: number
     isAuth: boolean
+    token: string
 }
 const initialState: IInitialState = {
     name: '',
@@ -18,7 +19,8 @@ const initialState: IInitialState = {
     id: '',
     points_id: [],
     balance: 0,
-    isAuth: false
+    isAuth: false,
+    token: ''
 };
 const userSlice = createSlice({
     name: "user",
@@ -31,8 +33,13 @@ const userSlice = createSlice({
                 isAuth: true,
             };
         },
+        removeUser(state) {
+            return{
+                ...state = initialState
+            }
+        }
     },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -27,6 +27,7 @@ const Points: FC = ({}) => {
     });
     Promise.all(fetchPoints).then((point) => setPoints(point));
   }, [pointsId]);
+
   return (
     <div>
       <Title title="МОИ ТОЧКИ" />

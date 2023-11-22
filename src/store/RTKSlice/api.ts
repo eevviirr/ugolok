@@ -12,7 +12,7 @@ export const ugolokApi = createApi({
     reducerPath: "ugolokApi",
     tagTypes: ["getUser", "addPoint", "getPoints"],
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://xn--90abdibneekjf0abcbbqil3bejr0c1r.xn--p1ai:8000/",
+        baseUrl: import.meta.env.VITE_API_URL,
     }),
     endpoints: (builder) => ({
         getUser: builder.query({
@@ -57,11 +57,27 @@ export const ugolokApi = createApi({
                 url: `payments/${userId}?value=${value}`,
                 method: "POST"
             })
-        })
+        }),
+        postComment: builder.mutation({
+            query: (body) => ({
+                url: "/comments",
+                method: "POST",
+                body
+            })
+        }),
+        getComments: builder.query({
+            query: ({ token, pointId }) => `/comments/by/pointID?token=${token}&pointID=${pointId}`
+        }),
+        getQR: builder.query({
+            query: ( pointId ) => `/points/${pointId}/qr`
+        }),
     }),
 });
 
 export const {
+    useGetQRQuery,
+    useGetCommentsQuery,
+    usePostCommentMutation,
     usePostPaymentsMutation,
     useGetUserQuery,
     useGetPhoneMutation,

@@ -34,6 +34,7 @@ const Register: FC = () => {
               surname: fullName[1],
               login: data.login,
               password: data.password,
+              token: data
             })
           );
           localStorage.setItem("token", data);
